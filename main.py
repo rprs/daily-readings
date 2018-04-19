@@ -49,11 +49,12 @@ def get_readings_from_content(content):
 
 def get_title_from_content(content):
     for t in content.find_all('h3'):
-        if 'Calendar' not in t and 'Iitems' not in t:
+        # We assume that Lectionary will always be part of the title.
+        # So far it has.
+        if 'Lectionary' in t.text:
             for br in t.find_all('br'):
                 br.replace_with('\n')
             return t.text
-
 
 def format_readings(readings):
     for r in readings:
