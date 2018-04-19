@@ -70,9 +70,9 @@ def write_to_file(title, readings):
     date = datetime.date.today().strftime('%Y-%m-%d')
     file_title = ''.join(['dr', date, '.txt'])
     f = open(file_title, 'w+')
-    f.write(title)
+    f.write(title.encode('utf8'))
     for r in readings:
-        f.write(r.title)
+        f.write(r.title.encode('utf8'))
         f.write(r.text.encode('utf8'))
     f.close()
 
