@@ -1,7 +1,12 @@
+"""
+Tests for main.py from daily readings.
+
+Ensures that we corectly extract the readings from the web srouce.
+"""
 from main import get_source_from_web
 
-""" List of dates that show a corner case that we need to handle."""
-test_cases = [
+# List of dates that show a corner case that we need to handle.
+TEST_CASES = [
     '032918',
     '041518',
     '041618',
@@ -18,19 +23,20 @@ def download_pages_for_testing():
 
     This is done once and then the files are saved in the test_pages directory.
     """
-    for date in test_cases:
+    for date in TEST_CASES:
         url_content = get_source_from_web(date)
         file_name = ''.join(['test_pages/', date, '.txt'])
-        with open(file_name, 'w') as f:
-            f.write(url_content)
+        with open(file_name, 'w') as _file:
+            _file.write(url_content)
             # python 3 equivalent
             # print(url_content, file=f)
 
 
-def test_get_srouce_from_web():
-    print(get_source_from_web())
+def test_get_source_from_web():
+    """basic case"""
     assert 1 == 1
 
-# Only use this when you need to download new test cases (new dates that have a weird format for the daily reading).
+# Only use this when you need to download new test cases (new dates that have
+# a weird format for the daily reading).
 # To run: `python test_main.py`
 # download_pages_for_testing()
