@@ -7,8 +7,10 @@ class Reading:
         self.title = title
         self.text = text
 
-def get_source_from_web():
-    date = datetime.date.today().strftime('%m%d%y')
+def get_date_for_today():
+    return datetime.date.today().strftime('%m%d%y')
+
+def get_source_from_web(date):
     url_prefix = 'http://www.usccb.org/bible/readings/'
     url_suffix = '.cfm'
     url = ''.join([url_prefix, date, url_suffix])
@@ -16,6 +18,9 @@ def get_source_from_web():
     # Retrieve the page source
     response = urllib2.urlopen(url)
     page_source = response.read()
+    return page_source
+
+def convert_web_source_into_soup(page_source):
     soup = BeautifulSoup(page_source, 'html5lib')
     return soup
 
@@ -79,10 +84,12 @@ def write_to_file(title, readings):
 
 
 def main():
-    source = get_source_from_web()
-    readings = get_readings_from_content(source)
+    date = get_date_for_today()
+    source = get_source_from_web(date)
+    soup = convert_web_source_into_soup(source)
+    readings = get_readings_from_content(soup)
     format_readings(readings)
-    title = get_title_from_content(source)
+    title = get_title_from_content(soup)
     title = ''.join(['# ', title, '\n\n\n\n'])
     write_to_file(title, readings)
 
