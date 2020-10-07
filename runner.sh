@@ -11,7 +11,9 @@ today_date=$(date +"%Y-%m-%d")
 mobi_file="dr$today_date.mobi"
 txt_file="dr$today_date.txt"
 # For options, see https://manual.calibre-ebook.com/generated/en/ebook-convert.html
-ebook-convert $txt_file $mobi_file --max-toc-links=0 --level1-toc "//h:h1" --level2-toc "//h:h2" --level3-toc "//h:h3" --use-auto-toc --formatting-type=markdown --paragraph-type=unformatted
+#  ebook-convert $txt_file $mobi_file --max-toc-links=0 --level1-toc "//h:h1" --level2-toc "//h:h2" --level3-toc "//h:h3" --use-auto-toc --formatting-type=markdown --paragraph-type=unformatted
+
+ebook-convert $txt_file $mobi_file --authors=bible.usccb.org --title="2020 daily readings" --max-toc-links=0 --level1-toc "//h:h1" --level2-toc "//h:h2" --level3-toc "//h:h3" --use-auto-toc --formatting-type=markdown --paragraph-type=off
 
 # send file by email
 mail -s "daily_readings" -r $1 $2 -A $mobi_file < emailbody.txt 
