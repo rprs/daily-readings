@@ -13,6 +13,11 @@ http://www.usccb.org/bible/readings/index.cfm
 
 ## To send it over email.
 
+NOTE: Cannot send it directly to the kindle. Even if the file is attached, the
+amazon tool complains that there is not a file attached. Resending the file
+manually works. Suggestion is to send file to oneself first, then to the knidle
+email.
+
 `mail -s "convert" -r <EMAIL_FROM> <EMAIL_TO> -A dr2021.mobi < emailbody.txt`
 
 ## to auto format python code
