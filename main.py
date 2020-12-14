@@ -124,8 +124,8 @@ def get_lectures_for_date(date):
 
 def main():
     """main function when we call python <this_file>."""
-    start_date = datetime.date(2020, 1, 1)
-    end_date = datetime.date(2021, 1, 1)
+    start_date = datetime.date(2021, 1, 1)
+    end_date = datetime.date(2022, 1, 1)
     date = start_date
     # Used these date (and range 5 in the loop) for testing purposes.
     # date = datetime.date(2020, 9, 25)
@@ -134,10 +134,6 @@ def main():
     # for i in range(5):
     while date < end_date:
         print('tackling date: {0}'.format(date.strftime('%Y-%m-%d')))
-        if date == datetime.date(2020, 6, 4):
-            # For some reson, the webpage does not have levtures for this day.
-            date = date + d
-            continue
         lectures.append(get_lectures_for_date(date))
         date = date + d
     write_to_file(start_date, lectures)

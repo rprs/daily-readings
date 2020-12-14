@@ -9,11 +9,11 @@ http://www.usccb.org/bible/readings/index.cfm
 
 ## to convert output of pogram to a .mobi ebook.
 
-`ebook-convert dr2020.md dr2020.mobi --authors=bible.usccb.org --title="2020 Daily Readings" --max-toc-links=0 --level1-toc "//h:h1" --level2-toc "//h:h2"  --use-auto-toc --formatting-type=markdown --paragraph-type=off`
+`ebook-convert dr2021.md dr2021.mobi --authors=bible.usccb.org --title="2021 Daily Readings" --max-toc-links=0 --level1-toc "//h:h1" --level2-toc "//h:h2"  --use-auto-toc --formatting-type=markdown --paragraph-type=off`
 
 ## To send it over email.
 
-`mail -s "convert" -r <EMAIL_FROM> <EMAIL_TO> -A dr2020.mobi < emailbody.txt`
+`mail -s "convert" -r <EMAIL_FROM> <EMAIL_TO> -A dr2021.mobi < emailbody.txt`
 
 ## to auto format python code
 
