@@ -70,6 +70,9 @@ def get_readings(content):
                 br_tag.replace_with('\n')
             texts.append(psalm_with_breaks(strip_empty_lines(r.text.strip())))
         else:
+            if r.find('p') is None:
+                for br_tag in r.find_all('br'):
+                    br_tag.replace_with('\n')
             texts.append(r.text.strip())
     return texts
 
